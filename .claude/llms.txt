@@ -1,0 +1,39 @@
+# Forge documentation index
+
+# Source of truth for the Forge platform. When the cheatsheet doesn't have
+# enough detail, WebFetch the most relevant URL below rather than guessing.
+# Format: URL — one-line description of what's there.
+
+# --- Manifest & runtime ---
+https://developer.atlassian.com/platform/forge/manifest-reference/ — Full manifest schema, every field documented
+https://developer.atlassian.com/platform/forge/runtime/ — Runtime versions, supported Node features, lifecycle
+https://developer.atlassian.com/platform/forge/permissions/ — Scope reference for read/write across products
+https://developer.atlassian.com/platform/forge/manifest-reference/scopes-product-confluence/ — Exact Confluence scope strings (e.g. read:confluence-user, not read:user:confluence — verify here before guessing a scope name)
+
+# --- UI Kit (React-based, modern — use this) ---
+https://developer.atlassian.com/platform/forge/ui-kit/components/ — Component reference for @forge/react
+https://developer.atlassian.com/platform/forge/ui-kit/hooks/ — Hooks like useProductContext, useState
+https://developer.atlassian.com/platform/forge/ui-kit/rendering/ — ForgeReconciler.render(), patterns
+
+# --- Backend resolvers and API ---
+https://developer.atlassian.com/platform/forge/runtime-reference/api/ — @forge/api surface, asUser/asApp, route templates
+https://developer.atlassian.com/platform/forge/runtime-reference/resolver/ — @forge/resolver, defining handlers
+https://developer.atlassian.com/platform/forge/runtime-reference/bridge/ — @forge/bridge, invoke() from frontend
+
+# --- Confluence Cloud REST APIs ---
+https://developer.atlassian.com/cloud/confluence/rest/v2/intro/ — v2 API overview, what's available vs v1
+https://developer.atlassian.com/cloud/confluence/rest/v2/api-group-page/ — Pages endpoints
+https://developer.atlassian.com/cloud/confluence/rest/v2/api-group-attachment/ — Attachments endpoints
+https://developer.atlassian.com/cloud/confluence/rest/api-group-users/ — Users (still v1, no v2 yet)
+
+# --- Jira Cloud REST APIs (for Jira-side apps) ---
+https://developer.atlassian.com/cloud/jira/platform/rest/v3/intro/ — Jira platform v3
+https://developer.atlassian.com/cloud/jira/software/rest/intro/ — Jira Software (boards, sprints, worklogs)
+
+# --- CLI & deployment ---
+https://developer.atlassian.com/platform/forge/cli-reference/ — All forge CLI commands and flags
+https://developer.atlassian.com/platform/forge/environments/ — Development vs staging vs production environments
+
+# --- Storage and async ---
+https://developer.atlassian.com/platform/forge/runtime-reference/storage-api/ — Forge Storage (key-value + entity store)
+https://developer.atlassian.com/platform/forge/manifest-reference/modules/scheduled-trigger/ — Scheduled functions
