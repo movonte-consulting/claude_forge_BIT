@@ -167,6 +167,12 @@ should ask before assuming.
 5. **Permissions are runtime-enforced.** `permissions.scopes` must explicitly include
    what you call. Missing scopes mean a successful `forge deploy` but 401s at runtime.
    `read:page:confluence` for v2 page reads, `read:attachment:confluence` for attachments.
+   **Listing a page's attachments (`/wiki/api/v2/pages/{id}/attachments`) needs ALL THREE
+   scopes: `read:page:confluence` + `read:attachment:confluence` + `read:confluence-user`
+   (the last only if you resolve uploader names).** Omitting `read:page:confluence` because
+   "I only read attachments" gives an API error at runtime (deploy and lint both pass).
+   Always start from the scope list in `manifest-reference.yml` and only remove scopes
+   deliberately.
    For `GET /wiki/rest/api/user` (v1 user lookup by accountId), the required scope is
    **`read:confluence-user`** — NOT `read:user:confluence`. `forge lint` will catch a
    wrong/missing scope with a `permission-scope-required` error naming the exact scope
@@ -273,6 +279,10 @@ invoke('getThing', { someArg: 'value' })
 - **Get page content:** `GET /wiki/api/v2/pages/{id}?body-format=storage`
 - **Get user by accountId:** `GET /wiki/rest/api/user?accountId={id}` (still v1)
 - **Search content:** `GET /wiki/api/v2/pages?title={title}&space-id={spaceId}`
+
+**Pagination:** never interpolate the whole `_links.next` into `route` (it percent-encodes
+the path). Extract the `cursor` query param from it and pass it as `` route`...&cursor=${cursor}` ``,
+and omit `cursor` entirely on the first request — an empty `cursor=` can return a 400.
 
 v2 responses are shaped `{ results: [...], _links: { next?: "..." } }`. Paginate by
 following `_links.next` if present.
